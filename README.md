@@ -5,6 +5,8 @@ Restful webservice for medium-frequency signal streaming.
 
 Assumes `mongod` is running on `localhost`, and uses a db called `noiserver`.
 
+`PUT` on `instrument/**/{id}` behaves like `PATCH` for convenience.
+
 ## Structure
 
 ```

@@ -5,6 +5,8 @@ require('coffee-script').register();
 var mongo = require('mongoose');
 var app = require('express')();
 
+app.use(require('body-parser').json());
+
 app.use('/', require('./routes/index'));
 app.use('/instrument', require('./routes/instrument'));
 app.use('/instrument/wii/mote', require('./routes/wiimote'));
