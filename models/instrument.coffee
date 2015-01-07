@@ -10,27 +10,25 @@ InstrumentSchema = new Schema fields,
   collection: 'instruments'
   discriminatorKey: '_type'
 
-newFields = (dbFields) ->
-  (req) ->
-    reduced =
-      enabled: true
-    for fieldName, fieldType of dbFields
-      if req.body[fieldName] != undefined
-        reduced[fieldName] = req.body[fieldName]
-      else
-        reduced[fieldName] = switch fieldType
-          when Boolean then false
-          when Number  then 0.0
-          when String  then ''
-    reduced
+newFields = (dbFields) -> (req) ->
+  reduced =
+    enabled: true
+  for fieldName, fieldType of dbFields
+    if req.body[fieldName] != undefined
+      reduced[fieldName] = req.body[fieldName]
+    else
+      reduced[fieldName] = switch fieldType
+        when Boolean then false
+        when Number  then 0.0
+        when String  then ''
+  reduced
 
-intersectFields = (dbFields) ->
-  (req) ->
-    reduced = {}
-    for k of dbFields
-      if req.body[k] != undefined
-        reduced[k] = req.body[k]
-    reduced
+intersectFields = (dbFields) -> (req) ->
+  reduced = {}
+  for k of dbFields
+    if req.body[k] != undefined
+      reduced[k] = req.body[k]
+  reduced
 
 module.exports =
   schema: InstrumentSchema

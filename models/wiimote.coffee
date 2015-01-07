@@ -1,6 +1,7 @@
 mongo = require 'mongoose'
 Instrument = require './instrument'
 
+type = 'wiimote'
 fields =
   axisAccelX: Number
   axisAccelY: Number
@@ -14,7 +15,8 @@ fields =
 WiimoteSchema = Instrument.schema.extend fields
 
 module.exports =
-  model: mongo.model 'wiimote', WiimoteSchema
+  type: type
+  mongoModel: mongo.model type, WiimoteSchema
   fields: fields
   newFields: Instrument.newFields fields
   intersectFields: Instrument.intersectFields fields

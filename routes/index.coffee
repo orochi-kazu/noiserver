@@ -1,6 +1,4 @@
-express = require 'express'
-router = express.Router()
-
+router = require('express').Router()
 pack = require '../package.json'
 
 router.get '/', (req, res) ->
