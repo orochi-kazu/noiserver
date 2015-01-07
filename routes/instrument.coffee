@@ -6,9 +6,10 @@ router.get '/', (req, res) ->
     #ios: ['GET']
 
 router.get '/wii', (req, res) ->
-  verbs = ['GET', 'POST', 'DELETE']
+  verbs = ['GET', 'POST']
   res.json
     mote:   verbs
-    #guitar: verbs
+    guitar: verbs
+    '{type}/{id}': ['GET', 'POST', 'PUT', 'DELETE']
 
 module.exports = router

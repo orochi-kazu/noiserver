@@ -17,6 +17,7 @@ WiimoteSchema = Instrument.schema.extend fields
 module.exports =
   type: type
   mongoModel: mongo.model type, WiimoteSchema
+  schema: WiimoteSchema
   fields: fields
   newFields: Instrument.newFields fields
   intersectFields: Instrument.intersectFields fields

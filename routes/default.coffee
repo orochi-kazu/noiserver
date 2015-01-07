@@ -1,5 +1,3 @@
-router = require('express').Router()
-
 errorOr = (err, res, noError) ->
   if err
     res.status(500).json err
@@ -52,15 +50,17 @@ defaultDelete = (model) -> (req, res) ->
   dbUpdate model, req, res,
     enabled: false
 
-defaultRest = (model) ->
+defaultRestRouter = (model) ->
+  router = require('express').Router()
   router.get '/', defaultGetAll model
   router.post '/', defaultPost model
   router.get '/:id', defaultGetOne model
   router.put '/:id', defaultPut model
   router.delete '/:id', defaultDelete model
+  router
 
 module.exports =
-  rest: defaultRest
+  router: defaultRestRouter
 
   getAll: defaultGetAll
   post: defaultPost
@@ -70,5 +70,3 @@ module.exports =
 
   dbUpdate: dbUpdate
   errorOr: errorOr
-
-  router: router
